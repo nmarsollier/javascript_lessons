@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+
+<html>	
+
+
+<head>	
+	<title>Formularios HTML</title>
+</head>
+
+<body>
+	Los formularios son utilizados para enviar datos al servidor, los componentes que tengan name seran subidos al servidor :<br />
+	<form action="html.html" method="post">
+		Input type hidden nos permite incorporar elementos no visuales pero que transfieren informacion a la pagina 
+		<input id="h7" type="hidden" name="valorOculto" value="Valor a subir" /><br /><br />
+
+		Input type text permite ingresar un texto de una sola linea : 
+		<input type="text" name="texto" value="Texto default" /><br /><br />
+
+		Input type checkbox permite seleccionar elementos varios en una lista : 
+		<input type="checkbox" name="checkbox" value="check1" />
+		<input type="checkbox" name="checkbox2" value="check2" /><br /><br />
+
+		Input type email es similar a text, solo que algunos navegadores indican con otro color cuando el valor
+		 es invalido : <input type="email" name="email"  /><br /><br />
+
+		Input type file podemos subir un archivo : <input type="file" name="archivo"  /><br /><br />
+
+
+		Input type password nos permite subir una contraseña 
+		<input type="password" name="pass"><br /><br />
+		
+		Con textarea podemos cargar textos de multiples lineas :<br />
+		<textarea rows="5" cols="20">hjh</textarea><br /><br />
+		
+		El elemento select nos permite definir una lista de seleccion en modo combobox :
+		<select name="continente">
+			<option value="america">Am&eacute;rica</option>
+			<option value="asia">Asia</option>
+			<option value="europa">Europa</option>
+			<option value="oceania">Ocean&iacute;a</option>
+			<option value="africa">Africa</option>
+		</select><br /><br />
+		
+		Puede ser en modo lista , y tambien puede permitir que se seleccionen varios elementos :<br /><br />
+		<select name="continente" size="10" multiple="multiple">
+			<option value="america">América</option>
+			<option value="asia">Asia</option>
+			<option value="europa">Europa</option>
+			<option value="oceania">Oceanía</option>
+			<option value="africa">Africa</option>
+		</select><br /><br />
+		
+		Input type submit sube la informacion a la web : 
+		<input type="submit" name="submit" value="Subir" /><br /><br />
+	</form> 
+</body>
+</html>
+
