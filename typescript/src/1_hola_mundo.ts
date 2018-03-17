@@ -3,7 +3,7 @@
  * 
  */
 class HolaMundo {
-    
+
     sayHello() {
         console.log("Hola Mundo");
     }
