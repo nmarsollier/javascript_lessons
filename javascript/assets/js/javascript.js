@@ -1,13 +1,15 @@
 // Las variables se deben definir utilizando la palabra var :
 console.log("Variables");
 
+// Alfanumericos
 var cadena1 = "Primer cadena de caracteres";
 var cadena2 = "Cadena compuesta con 'comillas simples'";
 var cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
 var cadenaConcatenada = 'Cadena ' + "concatenada";
-
-
-//Las variables se deben definir utilizando la palabra var :
+var template = `Templates a partir de ES5 ${cadena1}`
+var cadenaLarga = `
+    Hola soy una cadena larga
+`
 
 //Los nombres pueden tener alfanumericos, '$' y '_' . No deben empezar con numeros.
 var $numero1;
@@ -28,7 +30,7 @@ var cadenaCombinandoComillas = 'Esta es una cadena con "comillas" tambien. '; //
 
 var cadenaUnicod = "Cadena con caracteres unicode \u0041 "; // Caracteres unicode comienzan con \u
 
-//Asigancion y Expresiones 
+//Asigancion y Expresiones
 
 var asignacionNumerica = variableNumerica; // Podemos asingar un valor de una variable a otra.
 
@@ -46,26 +48,23 @@ var concatenacionStrBoolean = "El valor de expresionBooleana1 es " + expresionBo
 
 var concatenacionYSuma = 2 + 2 + " es cuatro. "; // La suma se evalua de izquierda a derecha
 
-var numero1 = 4564.34567;
-numero1.toFixed(2); // 4564.35
-numero1.toFixed(6); // 4564.345670
-numero1.toFixed(); // 4564
+var numero1 = 4564.84567;
 
+// toFixed redondea los numeros
+console.log(numero1.toFixed(2)); // 4564.85
+console.log(numero1.toFixed(6)); // 4564.845670
+console.log(numero1.toFixed()); // 4565
 
-//Undefined , null y NaN
-var objetoUndefined; // = undefined 
+//Undefined y null
+var objetoUndefined; // = undefined  es una variable declarada, pero nunca inicializada
 var objetoNull = null; // = valor especial null
-var objetoInfinity = 0 / 0; // es NaN
-var objetoNaN = 1 / 0; // Es infinity
-var valor1 = objetoNull + 1; // null+1 = 1
-console.log("undefined + 1" + (undefined + 1));
 
-isNaN(objetoNaN); // true			
-isNaN(objetoUndefined); // true  undefined no es numero
-isNaN(objetoNull); // false null es un numero
-isNaN("asdasd"); // true El string no puede evaluarse a numero
-isNaN("12"); // false "12" se evalua como numero
+// Estructuras de objectos
 
+var estructuraDatos1 = {
+    nombre: "Nestor",
+    hijos: 1
+}
 
 //Arrays
 console.log("\n\n\nArrays");
@@ -86,10 +85,7 @@ array.push("mundo"); // array = ["hola", "mundo"]
 array = [1, 2, 3]; // Una reasignacion puede cambiar el tipo de datos del array
 var primero = array.shift(); // ahora array = [2, 3], primero = 1
 
-
-array = [1, "hola", {
-    text: "mundo"
-}]; // Podemos incluir cualquier elemento en el array  
+array = [1, "hola", { text: "mundo"}]; // Podemos incluir cualquier elemento en el array
 
 
 
@@ -122,7 +118,7 @@ var upper = mensaje.toUpperCase(); // = "HOLA MUNDO"
 var upper = mensaje.toLowerCase(); // = "hola mundo"
 var letra = mensaje.charAt(0); // = H
 var posicion_a = mensaje.indexOf('a'); // = 3
-var posicion = mensaje.lastIndexOf('o'); // = 9 
+var posicion = mensaje.lastIndexOf('o'); // = 9
 var substring = mensaje.substring(2); // porcion = "la Mundo"
 var porcion = mensaje.substring(1, 8); // porcion = "ola Mun"
 
@@ -156,43 +152,45 @@ accesoGlobal();
     console.log("Funcion anonima e inmediata");
 })();
 
+
+// Expresion lambda
 ((param) => {
     console.log("Arrow function anonimo " + param);
 })("el parametro");
 
 
 /**
- * Una variable booleana tiene los valores true y false, pero cualquier objeto puede evaluearse en una expresion 
+ * Una variable booleana tiene los valores true y false, pero cualquier objeto puede evaluearse en una expresion
  * como a true y false:
- * 
- * 
+ *
+ *
     false
     null
     undefined
     ''     // Cadena vacia
 	0      // Numero 0
     NaN    // Not a number
- * 
+ *
  */
 
 console.log("\n\n\n Expresiones logicas");
 
 var numerico = 12;
 console.log("Expresiones ");
-console.log(numerico == "12"); // true, Si los valores son iguales
-console.log(numerico === "12"); // false, incluso si los valores son iguales
-console.log(numerico != "12"); // false, Si los valores son distintos
-console.log(numerico !== "12"); // true, Si los valores son distintos o el tipo de datos es distinto
+console.log(numerico == "12"); // =true, Si los valores son iguales
+console.log(numerico === "12"); // =false, incluso si los valores son iguales
+console.log(numerico != "12"); // =false, Si los valores son distintos
+console.log(numerico !== "12"); // =true, Si los valores son distintos o el tipo de datos es distinto
 
 
 console.log("\n\n\n Comportamientos extraños");
 
 // Jvascript tiene un comportamiento muy extraño cuando se usan strings y boolean, CUIDADO
-console.log("!'hola' : " + (!'hola')); // false 'hola' evalua como true
+console.log("!'hola' : " + (!'hola')); // =false 'hola' evalua como true
 console.log("!'' : " + (!'')); // true '' evalua como false
-console.log("'hola' == true : " + ('hola' == true)); // false 'hola' evalua como false en este caso
-console.log("'hola' && true : " + ('hola' && true)); // true 'hola' evalua como true
-console.log("'false' && true : " + ('false' && true)); // true 'false' evalua como true
+console.log("'hola' == true : " + ('hola' == true)); // =false 'hola' evalua como false en este caso
+console.log("'hola' && true : " + ('hola' && true)); // =true 'hola' evalua como true
+console.log("'false' && true : " + ('false' && true)); // =true 'false' evalua como true
 
 // Para darle sentido al uso de booleans creamos nuestra propia funcion de parseo de boolean
 // Sin embargo es conveniente usar alguna libreria de funciones como underscore
@@ -217,7 +215,7 @@ console.log("array2 = " + (array2)); //array2 = [1, 2, 3, 4, 5, 6]
 
 
 /* Tambien existen las expresiones :
- *  
+ *
    <  Menor
    <= Menor o igual
    >  Mayor
@@ -231,7 +229,7 @@ if (numerico) {
     console.log("ok numerico == 12 ==> true"); // Numerico tiene valor, ingresa
 }
 if (!NaN) {
-    console.log("ok !NaN es true, NaN es false"); // NaN evalua a falso ? 
+    console.log("ok !NaN es true, NaN es false"); // NaN evalua a falso
 }
 if (!null) {
     console.log("ok !null es true, null es false"); // null evalua a falso
@@ -287,25 +285,33 @@ var arreglo = ["uno", "dos", "tres"];
 for (var i in arreglo) {
     console.log(arreglo[i]);
 }
+// Foreach recibe como parametro una funcion con 3 parametros, usamos lambda
+arreglo.forEach ((value, index, array) => {
+    console.log(value);
+})
 
+// poodemos prescindir de lo que no necesitamos
+arreglo.forEach ((value) => {
+    console.log(value);
+})
 
-/** 
+/**
  * Creacion del primer objeto en linea.
- * 
+ *
  * Uso de var para crear una instancia de un objeto.
  * las pripiedades de un objeto pueden tener cualquier nombre alfanumerico y varios caracteres especiales como _$@, excepto por las palabras reservadas :
- * 
- * " ' abstract arguments boolean break byte case catch char class* const continue debugger default delete do double else enum* eval export* 
+ *
+ * " ' abstract arguments boolean break byte case catch char class* const continue debugger default delete do double else enum* eval export*
  *   extends* false final finally float for function goto if implements import* in instanceof int interface let long native new null
  *   package private protected public return short static super* switch synchronized this throw throws transient true try typeof var void volatile
  *   while with yield
- * 
- * 
+ *
+ *
  * Javascript no utiliza tipos de datos, por lo que el tipo de datos de una propiedad se infiere de la asignacion de un valor.
- * 
+ *
  * Los objetos en javascript no son definidos por tipos, por lo tanto puede agregarse y quitarse las propiedades a gusto.
- * Puede definirse por ejemplo un objeto simplemente enunciandolo 
- * 
+ * Puede definirse por ejemplo un objeto simplemente enunciandolo
+ *
  */
 console.log("\n\n Objetos simples y arreglos");
 
@@ -330,6 +336,13 @@ console.log("Analizando valor undefined : " + primerObjeto.label);
 primerObjeto.label = null;
 console.log("Analizando valor null : " + primerObjeto.label);
 
+// En javascript los objetos no son estrucutras fijas, podemos agregarle propiedades luego de instanciar objetos
+primerObjeto.propiedadAgregada = "Agregada";
+console.log("Podemos agregar propiedades : " + primerObjeto.propiedadAgregada);
+
+// Incluso cambiar el comportamiento del objeto
+primerObjeto.getFechaActual = () => {return "Funcion cambiada."};
+console.log(primerObjeto.getFechaActual());
 
 /*
  * Existe una relacion muy cercana en javascript entre un objeto y un arreglo,
@@ -349,17 +362,17 @@ console.log(objetoYArreglos.arreglo["1"]);
 
 /**
  * Clases y prototipos
- * 
+ *
  * Dado que javascript no proporciona soporte oficial para el manejo de Objetos
  * pero todo en javascript es una estructura de datos, y a su vez
  * las estructuras de datos pueden tener punteros a funciones, por lo tanto
  * se pueden simular objetos, el problema es que no tenemos soporte para
  * la definicion de clases.
- * 
+ *
  */
-// El patron mas simple para la creacion de clases es utilizando una funcion de construccion de objeto
+// El patron mas simple para la creacion de objetos es utilizando una funcion de construccion de objeto
 console.log("\n\Factory Pattern");
-var functionCrearObjeto = function(nombre, edad, estado) {
+var Objeto1 = function(nombre, edad, estado) {
     var result = {
         nombre: nombre,
         edad: edad
@@ -375,14 +388,14 @@ var functionCrearObjeto = function(nombre, edad, estado) {
     return result;
 }
 
-var objetoFuncion1 = functionCrearObjeto("Nestor", 40, true);
-var objetoFuncion2 = functionCrearObjeto("Bruno", 5, false);
+var objetoFuncion1 = Objeto1("Nestor", 40, true);
+var objetoFuncion2 = Objeto1("Bruno", 5, false);
 objetoFuncion1.log();
 objetoFuncion2.log();
 
 //Construction Pattern
 console.log("\n\nConstruction Pattern");
-var constructorCrearObjeto = function(nombre, edad, estado) {
+var Objeto2 = function(nombre, edad, estado) {
     this.nombre = nombre;
     this.edad = edad;
     this.estado = estado;
@@ -394,24 +407,24 @@ var constructorCrearObjeto = function(nombre, edad, estado) {
     }
 }
 
-var constructorPersona1 = new constructorCrearObjeto("Nestor", 40, true);
-var constructorPersona2 = new constructorCrearObjeto("Bruno", 5, false);
+var constructorPersona1 = new Objeto2("Nestor", 40, true);
+var constructorPersona2 = new Objeto2("Bruno", 5, false);
 constructorPersona1.log();
 constructorPersona2.log();
 
 //Prototype Construction Function
 console.log("\n\nPrototype Construction Function");
-var prototypeCrearObjeto = function(nombre, edad, estado) {
+var Objeto3 = function(nombre, edad, estado) {
     this.nombre = nombre;
     this.edad = edad;
     this.estado = estado;
 }
-prototypeCrearObjeto.prototype.log = function() {
+Objeto3.prototype.log = function() {
     console.log(JSON.stringify(this));
 }
 
-var prototypePersona1 = new prototypeCrearObjeto("Nestor", 40, true);
-var prototypePersona2 = new prototypeCrearObjeto("Bruno", 5, false);
+var prototypePersona1 = new Objeto3("Nestor", 40, true);
+var prototypePersona2 = new Objeto3("Bruno", 5, false);
 prototypePersona1.log();
 prototypePersona2.log();
 
@@ -424,7 +437,7 @@ var funcionPrincipal = function(callback) {
     callback();
 }
 
-funcionPrincipal(function() {
+funcionPrincipal(() => {
     console.log("Callback");
 });
 
