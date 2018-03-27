@@ -8,3 +8,5 @@
 **/.history
 **/*.log
 **/package-lock.json
+**/dist
+
