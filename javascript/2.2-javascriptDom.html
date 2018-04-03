@@ -1,133 +1,126 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Pagina de Ejemplo Javascript acceso a Objetos DOM</title>
 
-	</head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Pagina de Ejemplo Javascript acceso a Objetos DOM</title>
 
-	<!-- Body onload es un evento que se ejecuta cuando se termina de cargar la pagina y todos sus elementos. -->
-	<body onload="cargaCompleta(2)">
-		Input Text : <input id="texto" type="text" name="texto" value="valor inicial" /><br />
+    <script>
+        // LLamada durante el evento onLoad
+        function cargaCompleta(numerico) {
+            // A travez del 'id' de cada elemento es la forma mas apropiada de acceder a un objeto DOM
+            document.getElementById("texto").value = "Valor asignado " + numerico;
+            continenteSeleccionado();
+
+            console.log("Texto seleccionado : " + document.getElementById("texto").value);
+
+            var elementos = document.getElementsByName("pregunta");
+            console.log(elementos[1].checked);
+            debugger;
+        };
+
+        // Esta funcion asigna el codigo del continente seleccionado en el combo al Input de abajo.
+        function continenteSeleccionado() {
+            var cSelect = document.getElementById("continente");
+            document.getElementById("continenteSeleccionado").value = cSelect.options[cSelect.selectedIndex].value;
+        }
+
+        /*
+        Otros eventos comunes son :
+        	
+        	onblur : Deseleccionar el elemento en <button>, <input>, <label>, <select>, <textarea>, <body>
+        	
+        	onchange: Deseleccionar un elemento que se ha modificado <input>, <select>, <textarea>
+        	
+        	onclick: Pinchar y soltar el ratï¿½n Todos los elementos
+        	
+        	ondblclick: Pinchar dos veces seguidas con el ratï¿½n Todos los elementos
+        	
+        	onfocus:  Seleccionar un elemento <button>, <input>, <label>, <select>, <textarea>, <body>
+        	
+        	onkeypress: Pulsar una tecla Elementos de formulario y <body>
+        	
+        	onload: La pï¿½gina se ha cargado completamente <body>
+        	
+        	onmousedown: Pulsar (sin soltar) un botï¿½n del ratï¿½n Todos los elementos
+        	
+        	onmousemove: Mover el ratï¿½n Todos los elementos 
+        	
+        	onmouseout: El ratï¿½n "sale" del elemento (pasa por 	encima de otro elemento) Todos los elementos
+        	
+        	onmouseover: El ratï¿½n "entra" en el elemento (pasa por encima del elemento) Todos los elementos
+        	
+        	onreset: Inicializar el formulario (borrar todos sus datos) <form>
+        	
+        	onselect: Seleccionar un texto <input>, <textarea> 
+        	
+        	onsubmit: Enviar el formulario <form>
+        	
+        	onunload:  Se abandona la pï¿½gina (por ejemplo al cerrar el navegador) <body>
+			
+        */
+
+        // Otra forma de asignar un evento es utilizando el mismo objeto dom y redefiniendo la funcion relacionada al evento 
+        document.getElementById("continenteSeleccionado").onclick = function(event) {
+
+            // El parametro evento contiene toda la informacion relacionada al evento click.
+
+            var lista = document.getElementById("continente");
+            alert(lista.options[lista.selectedIndex].innerHTML);
+        }
+
+
+
+        /*
+			Este documento posee una estructura similar a :
+			WINDOW 
+				DOCUMENT
+					HTML 
+						 HEAD
+								 META
+								 TITLE
+								 SCRIPT
+						BODY
+								INPUT
+								SELECT
+								INPUT
+								A HREF
 		
-		<!-- onchange es un evento que se ejecuta cuando el valor del combo cambia. -->
-		Select : <select id="continente" name="continente" onchange="continenteSeleccionado()">
-					<option value="america">América</option>
+			*/
+    </script>
+</head>
+
+<!-- Body onload es un evento que se ejecuta cuando se termina de cargar la pagina y todos sus elementos. -->
+
+<body onload="cargaCompleta(2)">
+    Input Text : <input id="texto" type="text" name="texto" value="valor inicial" /><br />
+
+    <!-- onchange es un evento que se ejecuta cuando el valor del combo cambia. -->
+    Select : <select id="continente" name="continente" onchange="continenteSeleccionado()">
+					<option value="america">Amï¿½rica</option>
 					<option value="asia">Asia</option>
 					<option value="europa">Europa</option>
-					<option value="oceania">Oceanía</option>
+					<option value="oceania">Oceanï¿½a</option>
 					<option value="africa">Africa</option>
-				</select><br />
-		
-		Radios :
-		<input type="radio" value="si" name="pregunta" id="pregunta_si"/> SI
-		<input type="radio" value="no" name="pregunta" id="pregunta_no"/> NO
-		<input type="radio" value="nsnc" name="pregunta" id="pregunta_nsnc"/> NS/NC
-		<BR>
-				
-		<!-- readonly es para establecer un componente de solo lectura -->
-		Input Text (Valor Seleccionado) : 
-			<input id="continenteSeleccionado"  type="text" name="continenteSeleccionado" readonly="readonly"/>
-		<BR />	
-		
-		Referencia de Objetos DOM y Javascript : 
-		<a href="http://www.w3schools.com/jsref/">www.w3schools.com</a>
+				</select><br /> Radios :
+    <input type="radio" value="si" name="pregunta" id="pregunta_si" /> SI
+    <input type="radio" value="no" name="pregunta" id="pregunta_no" /> NO
+    <input type="radio" value="nsnc" name="pregunta" id="pregunta_nsnc" /> NS/NC
+    <BR>
+
+    <!-- readonly es para establecer un componente de solo lectura -->
+    Input Text (Valor Seleccionado) :
+    <input id="continenteSeleccionado" type="text" name="continenteSeleccionado" readonly="readonly" />
+    <BR /> Referencia de Objetos DOM y Javascript :
+    <a href="http://www.w3schools.com/jsref/">www.w3schools.com</a>
 
 
-		<!-- post a la misma pagina -->
-		<form id='formulario' method="POST" action='#'>
-		
-			<!-- Llamamos varias funciones en el evento click. En este caso impedimos se hagan 2 submit con doble click. -->
-			<input type='button' value='Enviar' onclick='this.disabled=true; this.value="Enviando..."; this.form.submit()' />
-		</form>
-	</body>
+    <!-- post a la misma pagina -->
+    <form id='formulario' method="POST" action='#'>
+
+        <!-- Llamamos varias funciones en el evento click. En este caso impedimos se hagan 2 submit con doble click. -->
+        <input type='button' value='Enviar' onclick='this.disabled=true; this.value="Enviando..."; this.form.submit()' />
+    </form>
+</body>
+
 </html>
-
-
-
-<script>
-
-	// LLamada durante el evento onLoad
-	function cargaCompleta(numerico) {
-		// A travez del 'id' de cada elemento es la forma mas apropiada de acceder a un objeto DOM
-		document.getElementById("texto").value = "Valor asignado " + numerico;
-		continenteSeleccionado();
-		
-		console.log("Texto seleccionado : " + document.getElementById("texto").value);
-		
-		var elementos = document.getElementsByName("pregunta");
-		console.log(elementos[1].checked);
-	};
-	
-	// Esta funcion asigna el codigo del continente seleccionado en el combo al Input de abajo.
-	function continenteSeleccionado() {
-		var cSelect = document.getElementById("continente");
-		document.getElementById("continenteSeleccionado").value = cSelect.options[cSelect.selectedIndex].value;
-	}
-	
-	/*
-	Otros eventos comunes son :
-		
-		onblur : Deseleccionar el elemento en <button>, <input>, <label>, <select>, <textarea>, <body>
-		
-		onchange: Deseleccionar un elemento que se ha modificado <input>, <select>, <textarea>
-		
-		onclick: Pinchar y soltar el ratón Todos los elementos
-		
-		ondblclick: Pinchar dos veces seguidas con el ratón Todos los elementos
-		
-		onfocus:  Seleccionar un elemento <button>, <input>, <label>, <select>, <textarea>, <body>
-		
-		onkeypress: Pulsar una tecla Elementos de formulario y <body>
-		
-		onload: La página se ha cargado completamente <body>
-		
-		onmousedown: Pulsar (sin soltar) un botón del ratón Todos los elementos
-		
-		onmousemove: Mover el ratón Todos los elementos 
-		
-		onmouseout: El ratón "sale" del elemento (pasa por 	encima de otro elemento) Todos los elementos
-		
-		onmouseover: El ratón "entra" en el elemento (pasa por encima del elemento) Todos los elementos
-		
-		onreset: Inicializar el formulario (borrar todos sus datos) <form>
-		
-		onselect: Seleccionar un texto <input>, <textarea> 
-		
-		onsubmit: Enviar el formulario <form>
-		
-		onunload:  Se abandona la página (por ejemplo al cerrar el navegador) <body>
-	
-	*/
-	
-	// Otra forma de asignar un evento es utilizando el mismo objeto dom y redefiniendo la funcion relacionada al evento 
-	document.getElementById("continenteSeleccionado").onclick = function(event) {
-		
-		// El parametro evento contiene toda la informacion relacionada al evento click.
-		
-		var lista = document.getElementById("continente");
-		alert(lista.options[lista.selectedIndex].innerHTML);
-	}
-	
-	
-	
-	/*
-	Este documento posee una estructura similar a :
-	WINDOW 
-		DOCUMENT
-	        HTML 
-		 		HEAD
-		 				META
-		 				TITLE
-		 				SCRIPT
-				BODY
-						INPUT
-						SELECT
-						INPUT
-						A HREF
-
-	*/
-	
-	
-	
-</script>

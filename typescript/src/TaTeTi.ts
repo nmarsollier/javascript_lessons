@@ -12,14 +12,14 @@ class TaTeTi {
   }
 
   public isTaTeTi() {
-    return this.tablero[0] && this.tablero[1] && this.tablero[2]
-      || this.tablero[3] && this.tablero[4] && this.tablero[5]
-      || this.tablero[6] && this.tablero[7] && this.tablero[8]
-      || this.tablero[0] && this.tablero[3] && this.tablero[6]
-      || this.tablero[1] && this.tablero[4] && this.tablero[7]
-      || this.tablero[2] && this.tablero[5] && this.tablero[8]
-      || this.tablero[0] && this.tablero[4] && this.tablero[8]
-      || this.tablero[2] && this.tablero[4] && this.tablero[6];
+    return (this.tablero[0] === this.tablero[1] === this.tablero[2])
+      || (this.tablero[3] === this.tablero[4] === this.tablero[5])
+      || (this.tablero[6] === this.tablero[7] === this.tablero[8])
+      || (this.tablero[0] === this.tablero[3] === this.tablero[6])
+      || (this.tablero[1] === this.tablero[4] === this.tablero[7])
+      || (this.tablero[2] === this.tablero[5] === this.tablero[8])
+      || (this.tablero[0] === this.tablero[4] === this.tablero[8])
+      || (this.tablero[2] === this.tablero[4] === this.tablero[6]);
   }
 
   public toString() {

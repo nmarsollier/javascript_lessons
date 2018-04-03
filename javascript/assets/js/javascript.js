@@ -1,6 +1,8 @@
 // Las variables se deben definir utilizando la palabra var :
 console.log("Variables");
 
+const constante = "esta es una constante";
+
 // Alfanumericos
 var cadena1 = "Primer cadena de caracteres";
 var cadena2 = "Cadena compuesta con 'comillas simples'";
@@ -85,7 +87,7 @@ array.push("mundo"); // array = ["hola", "mundo"]
 array = [1, 2, 3]; // Una reasignacion puede cambiar el tipo de datos del array
 var primero = array.shift(); // ahora array = [2, 3], primero = 1
 
-array = [1, "hola", { text: "mundo"}]; // Podemos incluir cualquier elemento en el array
+array = [1, "hola", { text: "mundo" }]; // Podemos incluir cualquier elemento en el array
 
 
 
@@ -286,12 +288,12 @@ for (var i in arreglo) {
     console.log(arreglo[i]);
 }
 // Foreach recibe como parametro una funcion con 3 parametros, usamos lambda
-arreglo.forEach ((value, index, array) => {
+arreglo.forEach((value, index, array) => {
     console.log(value);
 })
 
 // poodemos prescindir de lo que no necesitamos
-arreglo.forEach ((value) => {
+arreglo.forEach((value) => {
     console.log(value);
 })
 
@@ -341,7 +343,7 @@ primerObjeto.propiedadAgregada = "Agregada";
 console.log("Podemos agregar propiedades : " + primerObjeto.propiedadAgregada);
 
 // Incluso cambiar el comportamiento del objeto
-primerObjeto.getFechaActual = () => {return "Funcion cambiada."};
+primerObjeto.getFechaActual = () => { return "Funcion cambiada." };
 console.log(primerObjeto.getFechaActual());
 
 /*
@@ -355,7 +357,7 @@ var objetoYArreglos = {
     "2": "valor 2"
 }
 
-console.log(objetoYArreglos[1]);
+console.log(objetoYArreglos[0]);
 console.log(objetoYArreglos["2"]);
 console.log(objetoYArreglos["arreglo"][0]);
 console.log(objetoYArreglos.arreglo["1"]);
