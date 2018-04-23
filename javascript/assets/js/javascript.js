@@ -4,14 +4,17 @@ console.log("Variables");
 const constante = "esta es una constante";
 
 // Alfanumericos
-var cadena1 = "Primer cadena de caracteres";
+// const define una constante, no se puede modificar su valor
+const cadena1 = "Primer cadena de caracteres";
+
+// Var define variables, pueden modificar su valor
 var cadena2 = "Cadena compuesta con 'comillas simples'";
 var cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
 var cadenaConcatenada = 'Cadena ' + "concatenada";
 var template = `Templates a partir de ES5 ${cadena1}`
 var cadenaLarga = `
     Hola soy una cadena larga
-`
+`;
 
 //Los nombres pueden tener alfanumericos, '$' y '_' . No deben empezar con numeros.
 var $numero1;
