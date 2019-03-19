@@ -1,11 +1,9 @@
-// Las variables se deben definir utilizando la palabra var :
+// console.log es una forma de imprimir en la consola
 console.log("Variables");
-
-const constante = "esta es una constante";
 
 // Alfanumericos
 // const define una constante, no se puede modificar su valor
-const cadena1 = "Primer cadena de caracteres";
+const constante = "esta es una constante";
 
 // Var define variables, pueden modificar su valor
 var cadena2 = "Cadena compuesta con 'comillas simples'";
@@ -107,7 +105,7 @@ var visible = true;
 var varBooleana = !visible;
 
 var cantidad = 0;
-varBooleana = !cantidad; // Expresar un numero como booleano.  vacio = true
+varBooleana = !cantidad; // Expresar un numero como booleano.  0 evalua false, al negarlo queda = true
 
 var mensaje = "";
 varBooleana = !mensaje; // varBooleana = true
