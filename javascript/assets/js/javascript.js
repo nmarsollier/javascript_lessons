@@ -9,7 +9,7 @@ const constante = "esta es una constante";
 var cadena2 = "Cadena compuesta con 'comillas simples'";
 var cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
 var cadenaConcatenada = 'Cadena ' + "concatenada";
-var template = `Templates a partir de ES5 ${cadena1}`
+var template = `Templates a partir de ES5 ${cadena2}`
 var cadenaLarga = `
     Hola soy una cadena larga
 `;
@@ -136,7 +136,7 @@ function sumaMuestra(numero1, numero2) {
 
 sumaMuestra(1, 3); // llamada a la funcion
 
-var sumaMuestra1 = function(numero1, numero2) { // Un puntero a funcion.
+var sumaMuestra1 = function (numero1, numero2) { // Un puntero a funcion.
     var resultado = numero1 + numero2;
     return "El resultado es " + resultado; // En este ejemplo la funcion retorna un valor.
 };
@@ -151,7 +151,7 @@ accesoGlobal();
 
 // Funciones anonimas
 
-(function() {
+(function () {
     console.log("Funcion anonima e inmediata");
 })();
 
@@ -321,7 +321,7 @@ console.log("\n\n Objetos simples y arreglos");
 var primerObjeto = {
     fechaActual: Date(),
     label: "primerObjeto",
-    getFechaActual: function() {
+    getFechaActual: function () {
         return "Este es la fecha actual" + this.fechaActual;
     }
 };
@@ -375,7 +375,7 @@ console.log(objetoYArreglos.arreglo["1"]);
  */
 // El patron mas simple para la creacion de objetos es utilizando una funcion de construccion de objeto
 console.log("\n\Factory Pattern");
-var Objeto1 = function(nombre, edad, estado) {
+var Objeto1 = function (nombre, edad, estado) {
     var result = {
         nombre: nombre,
         edad: edad
@@ -383,7 +383,7 @@ var Objeto1 = function(nombre, edad, estado) {
 
     result.estado = estado;
 
-    result.log = function() {
+    result.log = function () {
         // Notar el uso de this dentro de la funcion, referencia a una instancia de result
         console.log(JSON.stringify(this));
     }
@@ -398,14 +398,14 @@ objetoFuncion2.log();
 
 //Construction Pattern
 console.log("\n\nConstruction Pattern");
-var Objeto2 = function(nombre, edad, estado) {
+var Objeto2 = function (nombre, edad, estado) {
     this.nombre = nombre;
     this.edad = edad;
     this.estado = estado;
 
     // El problema es que esta definicion de funcion se replica por cada uno
     // de los objetos que creamos
-    this.log = function() {
+    this.log = function () {
         console.log(JSON.stringify(this));
     }
 }
@@ -417,12 +417,12 @@ constructorPersona2.log();
 
 //Prototype Construction Function
 console.log("\n\nPrototype Construction Function");
-var Objeto3 = function(nombre, edad, estado) {
+var Objeto3 = function (nombre, edad, estado) {
     this.nombre = nombre;
     this.edad = edad;
     this.estado = estado;
 }
-Objeto3.prototype.log = function() {
+Objeto3.prototype.log = function () {
     console.log(JSON.stringify(this));
 }
 
@@ -435,7 +435,7 @@ prototypePersona2.log();
 console.log("\n\n Callback Pattern");
 // Callback Functions - High order functions
 // En javascript las funciones son first class objects, se pueden pasar como argumentos.
-var funcionPrincipal = function(callback) {
+var funcionPrincipal = function (callback) {
     console.log("Ejecutando el proceso principal");
     callback();
 }
@@ -468,7 +468,7 @@ console.log(calc(2, 3, (a, b) => {
 //En javascript las promesas son similares se compromete a hacer una tarea y resulta ok o falla
 // http://javascriptplayground.com/blog/2015/02/promises/
 console.log("\n\n Promises");
-var promesaCasamiento = new Promise(function(resolve, reject) {
+var promesaCasamiento = new Promise(function (resolve, reject) {
     console.log("Intentando casarse... esto va a llevar mucho tiempo...");
 
     var seCaso = Math.random() >= 0.5;
@@ -485,3 +485,37 @@ promesaCasamiento.then((result) => {
 }).catch((reason) => {
     console.log(" No se caso " + reason);
 });
+
+
+// Promesas con async await
+console.log("\n\n Async / Await");
+
+async function promesaAsync() {
+    console.log("Intentando casarse 2.0... esto va a llevar mucho tiempo...");
+    if (Math.random() >= 0.5) {
+        return Promise.resolve("Todo bien");
+    } else {
+        return Promise.reject("Todo mal");
+    }
+}
+
+// El bloque que llama await tiene que estar dentro de un bloque async
+async function testAsyncAwait() {
+    try {
+        var resultAW = await promesaAsync()
+        console.log("AW Se caso " + resultAW);
+    } catch (reason) {
+        console.log("AW No se caso " + reason);
+    }
+}
+testAsyncAwait();
+
+// Un ejemplo de lo mismo pero escrito de una forma integrando varias cosas
+(async () => {
+    try {
+        console.log("Integrando Ok " + (await promesaAsync()));
+    } catch (reason) {
+        console.log("Integrando Falla " + reason);
+    }
+})()
+
