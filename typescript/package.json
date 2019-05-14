@@ -1,10 +1,10 @@
 {
-  "name": "typescript",
+  "name": "typescript-lessons",
   "version": "1.0.0",
   "description": "Necesitamos los plugins de javascript y typescript npm install typescript",
   "main": "index.js",
   "dependencies": {
-    "typescript": "^2.7.2"
+    "typescript": "^2.9.2"
   },
   "devDependencies": {},
   "scripts": {
