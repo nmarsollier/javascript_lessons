@@ -36,8 +36,8 @@
         return newSquare;
     }
 
-    let mySquare = createSquare( { color: "black" });
-
+    let mySquare = createSquare( { color: "black", width:1 });
+    
 }
 
 // Readonly es similar a const, pero se usa para interfaces

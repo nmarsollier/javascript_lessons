@@ -6,7 +6,6 @@ let isDone: boolean = false;
 // Let se introduce para evitar problemas de scope de las variables declaradas con var
 // el scope de let es mucho mas intuitivo y funciona correctamente
 
-
 // Number 
 let decimal = 6; // El tipo se infiere del valor asignado en la declaracion
 let hex: number = 0xf00d;
