@@ -1,3 +1,6 @@
+### Si queres sabes mas sobre mi:
+[Nestor Marsollier](https://github.com/nmarsollier/profile)
+
 # Lecciones de Javascript / Typescript
 
 Este es un proyecto académico para explicar javascript.

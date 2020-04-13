@@ -27,40 +27,40 @@
 
         /*
         Otros eventos comunes son :
-        	
+
         	onblur : Deseleccionar el elemento en <button>, <input>, <label>, <select>, <textarea>, <body>
-        	
+
         	onchange: Deseleccionar un elemento que se ha modificado <input>, <select>, <textarea>
-        	
+
         	onclick: Pinchar y soltar el rat�n Todos los elementos
-        	
+
         	ondblclick: Pinchar dos veces seguidas con el rat�n Todos los elementos
-        	
+
         	onfocus:  Seleccionar un elemento <button>, <input>, <label>, <select>, <textarea>, <body>
-        	
+
         	onkeypress: Pulsar una tecla Elementos de formulario y <body>
-        	
+
         	onload: La p�gina se ha cargado completamente <body>
-        	
+
         	onmousedown: Pulsar (sin soltar) un bot�n del rat�n Todos los elementos
-        	
-        	onmousemove: Mover el rat�n Todos los elementos 
-        	
+
+        	onmousemove: Mover el rat�n Todos los elementos
+
         	onmouseout: El rat�n "sale" del elemento (pasa por 	encima de otro elemento) Todos los elementos
-        	
+
         	onmouseover: El rat�n "entra" en el elemento (pasa por encima del elemento) Todos los elementos
-        	
+
         	onreset: Inicializar el formulario (borrar todos sus datos) <form>
-        	
-        	onselect: Seleccionar un texto <input>, <textarea> 
-        	
+
+        	onselect: Seleccionar un texto <input>, <textarea>
+
         	onsubmit: Enviar el formulario <form>
-        	
+
         	onunload:  Se abandona la p�gina (por ejemplo al cerrar el navegador) <body>
-			
+
         */
 
-        // Otra forma de asignar un evento es utilizando el mismo objeto dom y redefiniendo la funcion relacionada al evento 
+        // Otra forma de asignar un evento es utilizando el mismo objeto dom y redefiniendo la funcion relacionada al evento
         document.getElementById("continenteSeleccionado").onclick = function(event) {
 
             // El parametro evento contiene toda la informacion relacionada al evento click.
@@ -73,9 +73,9 @@
 
         /*
 			Este documento posee una estructura similar a :
-			WINDOW 
+			WINDOW
 				DOCUMENT
-					HTML 
+					HTML
 						 HEAD
 								 META
 								 TITLE
@@ -85,24 +85,27 @@
 								SELECT
 								INPUT
 								A HREF
-		
+
 			*/
     </script>
 </head>
 
 <!-- Body onload es un evento que se ejecuta cuando se termina de cargar la pagina y todos sus elementos. -->
-
 <body onload="cargaCompleta(2)">
     Input Text : <input id="texto" type="text" name="texto" value="valor inicial" /><br />
 
     <!-- onchange es un evento que se ejecuta cuando el valor del combo cambia. -->
-    Select : <select id="continente" name="continente" onchange="continenteSeleccionado()">
-					<option value="america">Am�rica</option>
+    Select : <select id="continente" name="continente"
+                onchange="continenteSeleccionado()">
+					<option value="america">Am&eacute;rica</option>
 					<option value="asia">Asia</option>
 					<option value="europa">Europa</option>
-					<option value="oceania">Ocean�a</option>
+					<option value="oceania">Ocean&iacute;a</option>
 					<option value="africa">Africa</option>
-				</select><br /> Radios :
+                </select>
+
+    <br />
+    Radios :
     <input type="radio" value="si" name="pregunta" id="pregunta_si" /> SI
     <input type="radio" value="no" name="pregunta" id="pregunta_no" /> NO
     <input type="radio" value="nsnc" name="pregunta" id="pregunta_nsnc" /> NS/NC

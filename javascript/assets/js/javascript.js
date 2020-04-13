@@ -17,6 +17,7 @@ var cadenaLarga = `
 //Los nombres pueden tener alfanumericos, '$' y '_' . No deben empezar con numeros.
 var $numero1;
 var _$letra;
+
 var $$$otroNumero;
 var $_a__$4;
 
@@ -41,15 +42,15 @@ var expresionNumerica = variableNumerica * 10; // Podemos deinir numeros como ex
 
 var expresionBooleana = variableNumerica == 12; // Un valor booleano desde una expresion.
 
-var expresionBooleana1 = 12 == '12'; // Evalua a true
+var iExpresionBooleana1 = 12 == '12'; // Evalua a true
 
-var expresionBooleana2 = 12 === '12'; // Evalua a falso
+var dExpresionBooleana2 = 12 === '12'; // Evalua a falso
 
-var concatenacionCadenas = "El valor de Variable Numerica es " + variableNumerica; // Si concatenamos String con numero el resultado es String
+var sConcatenacionCadenas = "El valor de Variable Numerica es " + variableNumerica; // Si concatenamos String con numero el resultado es String
 
 var concatenacionStrBoolean = "El valor de expresionBooleana1 es " + expresionBooleana1; // Resulta en cadena
 
-var concatenacionYSuma = 2 + 2 + " es cuatro. "; // La suma se evalua de izquierda a derecha
+var concatenacionYSuma = 2 + 2 + " es cuatro. "; // La suma se evalua de izquierda a derecha "4 es cuatro"
 
 var numero1 = 4564.84567;
 
@@ -66,7 +67,10 @@ var objetoNull = null; // = valor especial null
 
 var estructuraDatos1 = {
     nombre: "Nestor",
-    hijos: 1
+    hijos: 1,
+    otra: {
+        dato1: "Uno"
+    }
 }
 
 //Arrays
@@ -89,8 +93,6 @@ array = [1, 2, 3]; // Una reasignacion puede cambiar el tipo de datos del array
 var primero = array.shift(); // ahora array = [2, 3], primero = 1
 
 array = [1, "hola", { text: "mundo" }]; // Podemos incluir cualquier elemento en el array
-
-
 
 //Operadores
 console.log("\n\n\n Operadores");
@@ -151,9 +153,9 @@ accesoGlobal();
 
 // Funciones anonimas
 
-(function () {
+(function (param) {
     console.log("Funcion anonima e inmediata");
-})();
+})("");
 
 
 // Expresion lambda
@@ -161,6 +163,15 @@ accesoGlobal();
     console.log("Arrow function anonimo " + param);
 })("el parametro");
 
+var funcionLambda = (param) => {
+    console.log("Arrow function " + param);
+};
+funcionLambda("Hola");
+
+(() => {
+    var texto = "texto 2"
+    console.log(texto + 123)
+})();
 
 /**
  * Una variable booleana tiene los valores true y false, pero cualquier objeto puede evaluearse en una expresion
@@ -205,16 +216,6 @@ function parseBoolean(string) {
 }
 
 console.log("parseBoolean('false') = " + (parseBoolean('false')));
-
-// Arrays
-console.log("\n\n\n Arrays");
-
-var vocales = ["a", "e", "i", "o", "u"];
-console.log("vocales.length = " + (vocales.length)); // numeroVocales = 5
-var array1 = [1, 2, 3];
-array2 = array1.concat(4, 5, 6);
-console.log("array2 = " + (array2)); //array2 = [1, 2, 3, 4, 5, 6]
-
 
 
 /* Tambien existen las expresiones :
@@ -326,11 +327,25 @@ var primerObjeto = {
     }
 };
 
+function newPrimerObb() {
+    return {
+        fechaActual: Date(),
+        label: "primerObjeto",
+        getFechaActual: function () {
+            return "Este es la fecha actual" + this.fechaActual;
+        }
+    }
+}
+
 console.log(primerObjeto.fechaActual);
 console.log(primerObjeto.getFechaActual());
 
 primerObjeto.label = "ya no es mas el primer objeto";
 console.log(primerObjeto["label"]);
+
+// null y undefined
+primerObjeto.label = 15;
+console.log("Analizando valor numerico : " + primerObjeto.label);
 
 // null y undefined
 primerObjeto.label = undefined;
@@ -418,12 +433,22 @@ constructorPersona2.log();
 //Prototype Construction Function
 console.log("\n\nPrototype Construction Function");
 var Objeto3 = function (nombre, edad, estado) {
-    this.nombre = nombre;
-    this.edad = edad;
-    this.estado = estado;
+    this._nombre = nombre;
+    this._edad = edad;
+    this._estado = estado;
+    this._apellido = null;
 }
 Objeto3.prototype.log = function () {
     console.log(JSON.stringify(this));
+}
+Objeto3.prototype.actualizarEdad = function (nuevaEdad) {
+    if (nuevaEdad < 0) {
+        nuevaEdad = 0
+    }
+    this.edad = nuevaEdad
+}
+Objeto3.prototype.cumple = function () {
+    this.edad++
 }
 
 var prototypePersona1 = new Objeto3("Nestor", 40, true);
@@ -468,7 +493,7 @@ console.log(calc(2, 3, (a, b) => {
 //En javascript las promesas son similares se compromete a hacer una tarea y resulta ok o falla
 // http://javascriptplayground.com/blog/2015/02/promises/
 console.log("\n\n Promises");
-var promesaCasamiento = new Promise(function (resolve, reject) {
+var promesaCasamiento = new Promise((resolve, reject) => {
     console.log("Intentando casarse... esto va a llevar mucho tiempo...");
 
     var seCaso = Math.random() >= 0.5;
@@ -480,12 +505,16 @@ var promesaCasamiento = new Promise(function (resolve, reject) {
     }
 });
 
-promesaCasamiento.then((result) => {
-    console.log("Se caso " + result);
-}).catch((reason) => {
-    console.log(" No se caso " + reason);
-});
-
+promesaCasamiento.then(
+    (result) => {
+        console.log("Se caso " + result);
+    }
+)
+    .catch(
+        (reason) => {
+            console.log(" No se caso " + reason);
+        }
+    );
 
 // Promesas con async await
 console.log("\n\n Async / Await");

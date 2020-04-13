@@ -57,7 +57,7 @@ igual = [] == false        						// true
 null == false      								// false
 null == undefined  								// true
 
-typeof "string"        							// string
+typeof "string"        							// String
 "string" instanceof String    					// false
 
 igual = [] == []       							// false  obvio son 2 arrays diferentes
@@ -77,6 +77,6 @@ igual = [] == ![]        						// true   ???
 (true + 1) === 2        				// true
 (true + true) === 2        				// true
 
-5 == "0000005.00000"    				// ?
+5 == "0000005.00000"    				// true
 "3" + 1  								// 31
 "3" - 1  								// 2
