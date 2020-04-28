@@ -82,7 +82,7 @@ function warnUser(): void {
     alert("This is my warning message");
 }
 
-// ? undica que es opcional
+// ? indica que es opcional
 function keepWholeObject(wholeObject: { a: string, b?: number }) {
     let { a, b = 1001 } = wholeObject;
 }

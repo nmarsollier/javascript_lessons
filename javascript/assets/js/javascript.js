@@ -2,57 +2,135 @@
 console.log("Variables");
 
 // Alfanumericos
-// const define una constante, no se puede modificar su valor
+// const define una constante, no se puede modificar el valor al que apunta
+// No significa que el objeto al que apunte sea inmutable, pero no podemos cambiar la referencia
+// para que apunte a otro obj
 const constante = "esta es una constante";
 
-// Var define variables, pueden modificar su valor
-var cadena2 = "Cadena compuesta con 'comillas simples'";
-var cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
-var cadenaConcatenada = 'Cadena ' + "concatenada";
-var template = `Templates a partir de ES5 ${cadena2}`
-var cadenaLarga = `
+// let define variables
+let variableLet = "esta es una varible con let";
+
+
+// En un contexto delimitado, por ejemplo un bloque de estructura
+function letTest() {
+    let x = 31;
+    if (true) {
+        let x = 71;  // Define una variable nueva dentro del bloque if
+        console.log(x);  // 71
+    }
+    console.log(x);  // 31
+}
+
+// Por otro lado no se puede redefinir la misma variable con let
+if (x) {
+    let foo;
+    let foo; // Terminamos con un SyntaxError.
+    var foo; // Igual tendriamos SyntaxError
+}
+
+//  no podemos usarlas antes de que sean definidos
+function let_something() {
+    console.log(foo); // ReferenceError: foo no está definido
+    let foo = 2;
+
+    for (let i = 0; i < 10; i++) {
+        console.log(i); // 0, 1, 2, 3, 4 ... 9
+    }
+
+    console.log(i); // ReferenceError: i is not defined
+}
+
+
+// Var define variables, similar a let pero es scope es a funcion, por lo tanto
+// puede darnos resultados inesperados.
+function varTest() {
+    var x = 31;
+    if (true) {
+        var x = 71;  // Misma variable, no se define una nueva
+        console.log(x);  // 71
+    }
+    console.log(x);  // 71
+}
+
+// Por otro lado no se puede redefinir la misma variable con let
+if (x) {
+    var foo;
+    var foo; // Todo bien, es la misma variable
+}
+
+//   podemos usarlas antes de que sean definidas
+function var_something() {
+    console.log(foo); // undefined
+    var foo = 2;
+
+    for (var i = 0; i < 10; i++) {
+        console.log(i); // 0, 1, 2, 3, 4 ... 9
+    }
+
+    console.log(i); // valor 10
+}
+
+
+// Ejemplos
+let cadena2 = "Cadena compuesta con 'comillas simples'";
+let cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
+let cadenaConcatenada = 'Cadena ' + "concatenada";
+let template = `Templates a partir de ES5 ${cadena2}`
+let cadenaLarga = `
     Hola soy una cadena larga
 `;
 
 //Los nombres pueden tener alfanumericos, '$' y '_' . No deben empezar con numeros.
-var $numero1;
-var _$letra;
+let $numero1;
+let _$letra;
 
-var $$$otroNumero;
-var $_a__$4;
+let $$$otroNumero;
+let $_a__$4;
 
+// Tipos de datos :
+// 1- Boolean. true y false.
+// 2- null. Una palabra clave especial que denota un valor nulo. Como JavaScript es case-sensitive, null no es lo mismo que Null, NULL, o cualquier otra variante.
+// 3- undefined. Una propiedad de alto nivel cuyo valor no es definido.
+// 4- Number. Un número entero o un número con coma flotante. Por ejemplo: 42 o 3.14159.
+// 5- BigInt. Un número entero con precisión arbitraria. Por ejemplo: 9007199254740992n
+// 6- String. Una secuencia de caracteres que representan un valor "Hola"
+// 7- Symbol (nuevo en ECMAScript 6). Un tipo de dato cuyas casos son únicos e inmutables
+// 8- Object : Objetos personalizados
 
-var variableNumerica = 12; // Todo numero es un double de 64 bits. Una division de enteros retorna double.
+let variableNumerica = 12; // Todo numero es un double de 64 bits. Una division de enteros retorna double.
 
-var variableBooleana = true; // Una variable booleana.
+let variableBooleana = true; // Una variable booleana.
 
-var cadenaDeTexto = "Esta es una cadena de texto con caracteres especiales \\ \" \' \t \n "; // Una cadena de caracteres.
+let cadenaDeTexto = "Esta es una cadena de texto con caracteres especiales \\ \" \' \t \n "; // Una cadena de caracteres.
 
-var cadenaConComillas = "Esta es una cadena con \"comillas \""; // Incluir comillas dentro de una cadena
+let cadenaConComillas = "Esta es una cadena con \"comillas \""; // Incluir comillas dentro de una cadena
 
-var cadenaCombinandoComillas = 'Esta es una cadena con "comillas" tambien. '; // Se pueden utilizar comillas simples y dobles.
+let cadenaCombinandoComillas = 'Esta es una cadena con "comillas" tambien. '; // Se pueden utilizar comillas simples y dobles.
 
-var cadenaUnicod = "Cadena con caracteres unicode \u0041 "; // Caracteres unicode comienzan con \u
+let cadenaUnicod = "Cadena con caracteres unicode \u0041 "; // Caracteres unicode comienzan con \u
 
 //Asigancion y Expresiones
 
-var asignacionNumerica = variableNumerica; // Podemos asingar un valor de una variable a otra.
+let asignacionNumerica = variableNumerica; // Podemos asingar un valor de una variable a otra.
 
-var expresionNumerica = variableNumerica * 10; // Podemos deinir numeros como expresion
+let expresionNumerica = variableNumerica * 10; // Podemos deinir numeros como expresion
 
-var expresionBooleana = variableNumerica == 12; // Un valor booleano desde una expresion.
+let expresionBooleana = variableNumerica == 12; // Un valor booleano desde una expresion.
 
-var iExpresionBooleana1 = 12 == '12'; // Evalua a true
+let iExpresionBooleana1 = 12 == '12'; // Evalua a true
 
-var dExpresionBooleana2 = 12 === '12'; // Evalua a falso
+let dExpresionBooleana2 = 12 === '12'; // Evalua a falso
 
-var sConcatenacionCadenas = "El valor de Variable Numerica es " + variableNumerica; // Si concatenamos String con numero el resultado es String
+let sConcatenacionCadenas = "El valor de Variable Numerica es " + variableNumerica; // Si concatenamos String con numero el resultado es String
 
-var concatenacionStrBoolean = "El valor de expresionBooleana1 es " + expresionBooleana1; // Resulta en cadena
+let concatenacionStrBoolean = "El valor de expresionBooleana1 es " + expresionBooleana1; // Resulta en cadena
 
-var concatenacionYSuma = 2 + 2 + " es cuatro. "; // La suma se evalua de izquierda a derecha "4 es cuatro"
+let concatenacionYSuma = 2 + 2 + " es cuatro. "; // La suma se evalua de izquierda a derecha "4 es cuatro"
 
-var numero1 = 4564.84567;
+let numero1 = 4564.84567;
+
+// Para evitar confusiones es bueno utilizar funciones de conversion como
+// parseInt(), parseFloat()
 
 // toFixed redondea los numeros
 console.log(numero1.toFixed(2)); // 4564.85
@@ -60,12 +138,11 @@ console.log(numero1.toFixed(6)); // 4564.845670
 console.log(numero1.toFixed()); // 4565
 
 //Undefined y null
-var objetoUndefined; // = undefined  es una variable declarada, pero nunca inicializada
-var objetoNull = null; // = valor especial null
+let objetoUndefined; // = undefined  es una variable declarada, pero nunca inicializada
+let objetoNull = null; // = valor especial null
 
-// Estructuras de objectos
-
-var estructuraDatos1 = {
+// Objetos literales
+let estructuraDatos1 = {
     nombre: "Nestor",
     hijos: 1,
     otra: {
@@ -73,111 +150,84 @@ var estructuraDatos1 = {
     }
 }
 
+// Expresiones regulares en forma literal, se definen con / y son del tipo  RegExp
+var re = /ab+c/;
+
+
 //Arrays
 console.log("\n\n\nArrays");
 
-var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; // Arreglo de caracteres.
-var primerElemento = dias[0]; // = "Lunes"
+// La siguiente es una definicion literal de arrays:
+let dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; // Arreglo de caracteres.
 
-var numeroDias = dias.length; // = 7
+// Los arrays son objetos, y pueden iniciarse de la forma
+let data1 = new Array("Hola", miVariable, 3.14159);
+let data2 = new Array(20);  // 20 es el tamaño que queremos inicial del array
 
-var array = ["hola", "mundo"];
-var mensaje = array.join(""); // mensaje = "holamundo"
+let primerElemento = dias[0]; // = "Lunes"
+
+let numeroDias = dias.length; // = 7
+
+let array = ["hola", "mundo"];
+let mensaje = array.join(""); // mensaje = "holamundo"
 mensaje = array.join(" "); // mensaje = "hola mundo"
 
-var ultimo = array.pop(); // ahora array = ["hola"], ultimo = "mundo"
+let ultimo = array.pop(); // ahora array = ["hola"], ultimo = "mundo"
 
 array.push("mundo"); // array = ["hola", "mundo"]
 
 array = [1, 2, 3]; // Una reasignacion puede cambiar el tipo de datos del array
-var primero = array.shift(); // ahora array = [2, 3], primero = 1
+let primero = array.shift(); // ahora array = [2, 3], primero = 1
 
 array = [1, "hola", { text: "mundo" }]; // Podemos incluir cualquier elemento en el array
+
+
+
 
 //Operadores
 console.log("\n\n\n Operadores");
 
-var numero = 5;
+let numero = 5;
 numero = numero + 1; // Operadores - + / * %
 numero += 3; // Operadores -= += /= *= %=
 --numero;
 numero++;
 
-var visible = true;
-var varBooleana = !visible;
+let visible = true;
+let varBooleana = !visible;
 
-var cantidad = 0;
+let cantidad = 0;
 varBooleana = !cantidad; // Expresar un numero como booleano.  0 evalua false, al negarlo queda = true
 
-var mensaje = "";
+let mensaje = "";
 varBooleana = !mensaje; // varBooleana = true
 
 varBooleana = !cantidad && !mensaje; // Expresion logica And. resultado  = true
 
+// Delete limina una variable definida con var, la deja undefined
+delete varBooleana;
 
 //Funciones STRING
 
-var mensaje = "Hola Mundo";
-var cantidadLetras = mensaje.length; //  = 10
-var upper = mensaje.toUpperCase(); // = "HOLA MUNDO"
-var upper = mensaje.toLowerCase(); // = "hola mundo"
-var letra = mensaje.charAt(0); // = H
-var posicion_a = mensaje.indexOf('a'); // = 3
-var posicion = mensaje.lastIndexOf('o'); // = 9
-var substring = mensaje.substring(2); // porcion = "la Mundo"
-var porcion = mensaje.substring(1, 8); // porcion = "ola Mun"
+let mensaje = "Hola Mundo";
+let cantidadLetras = mensaje.length; //  = 10
+let upper = mensaje.toUpperCase(); // = "HOLA MUNDO"
+let upper = mensaje.toLowerCase(); // = "hola mundo"
+let letra = mensaje.charAt(0); // = H
+let posicion_a = mensaje.indexOf('a'); // = 3
+let posicion = mensaje.lastIndexOf('o'); // = 9
+let substring = mensaje.substring(2); // porcion = "la Mundo"
+let porcion = mensaje.substring(1, 8); // porcion = "ola Mun"
 
 
-//Definicion de Funciones
-console.log("\n\n\n Funciones");
-
-function sumaMuestra(numero1, numero2) {
-    var resultado = numero1 + numero2;
-    console.log("El resultado es " + resultado);
-};
-
-sumaMuestra(1, 3); // llamada a la funcion
-
-var sumaMuestra1 = function (numero1, numero2) { // Un puntero a funcion.
-    var resultado = numero1 + numero2;
-    return "El resultado es " + resultado; // En este ejemplo la funcion retorna un valor.
-};
-console.log(sumaMuestra1(1, 3)); // LLamada con punteros.
-
-
-function accesoGlobal() {
-    console.log("Accedemos a la variable global mensaje " + mensaje);
-};
-
-accesoGlobal();
-
-// Funciones anonimas
-
-(function (param) {
-    console.log("Funcion anonima e inmediata");
-})("");
-
-
-// Expresion lambda
-((param) => {
-    console.log("Arrow function anonimo " + param);
-})("el parametro");
-
-var funcionLambda = (param) => {
-    console.log("Arrow function " + param);
-};
-funcionLambda("Hola");
-
-(() => {
-    var texto = "texto 2"
-    console.log(texto + 123)
-})();
+//=======================================================
+// Expresiones
 
 /**
- * Una variable booleana tiene los valores true y false, pero cualquier objeto puede evaluearse en una expresion
- * como a true y false:
+ * Una variable booleana tiene los valores true y false, pero cualquier objeto puede
+ * evaluearse en una expresion como a true y false:
  *
- *
+
     false
     null
     undefined
@@ -187,8 +237,6 @@ funcionLambda("Hola");
  *
  */
 
-console.log("\n\n\n Expresiones logicas");
-
 var numerico = 12;
 console.log("Expresiones ");
 console.log(numerico == "12"); // =true, Si los valores son iguales
@@ -196,38 +244,20 @@ console.log(numerico === "12"); // =false, incluso si los valores son iguales
 console.log(numerico != "12"); // =false, Si los valores son distintos
 console.log(numerico !== "12"); // =true, Si los valores son distintos o el tipo de datos es distinto
 
+// Remarco el uso de librerias de parseo de informacion para asegurarnos un buen manejo de estas
+// conversiones
 
-console.log("\n\n\n Comportamientos extraños");
-
-// Jvascript tiene un comportamiento muy extraño cuando se usan strings y boolean, CUIDADO
-console.log("!'hola' : " + (!'hola')); // =false 'hola' evalua como true
-console.log("!'' : " + (!'')); // true '' evalua como false
-console.log("'hola' == true : " + ('hola' == true)); // =false 'hola' evalua como false en este caso
-console.log("'hola' && true : " + ('hola' && true)); // =true 'hola' evalua como true
-console.log("'false' && true : " + ('false' && true)); // =true 'false' evalua como true
-
-// Para darle sentido al uso de booleans creamos nuestra propia funcion de parseo de boolean
-// Sin embargo es conveniente usar alguna libreria de funciones como underscore
-function parseBoolean(string) {
-    booleanValue = String(string).toLowerCase();
-    return booleanValue === 'true' ||
-        booleanValue === 'yes' ||
-        booleanValue === '1';
+// Bloques if
+if (condición_1) {
+    sentencia_1;
+} else if (condición_2) {
+    sentencia_2;
+} else if (condición_n) {
+    sentencia_n;
+} else {
+    ultima_sentencia;
 }
 
-console.log("parseBoolean('false') = " + (parseBoolean('false')));
-
-
-/* Tambien existen las expresiones :
- *
-   <  Menor
-   <= Menor o igual
-   >  Mayor
-   >= Mayor o igual
-   +-*%/  Operaciones matematicas
-   && Y logico
-   || O logico
-*/
 console.log("\n\n\n Condicionales");
 if (numerico) {
     console.log("ok numerico == 12 ==> true"); // Numerico tiene valor, ingresa
@@ -244,6 +274,32 @@ if (numerico > 3) {
 console.log(12 + 2 == 14 ? "ok 12 + 2 == 14 " : "no"); // La operacion matematica da 14
 
 
+// If inmediato
+condición ? valor1 : valor2
+
+// Bloque whiles
+while (x < 10) {
+    x++;
+}
+var x = 0
+do {
+    x++;
+} while (x < 10);
+
+// Switch
+switch (expresión) {
+    case etiqueta_1:
+        sentencias_1
+        [break;]
+    case etiqueta_2:
+        sentencias_2
+        [break;]
+      ...
+    default:
+        sentencias_por_defecto
+        [break;]
+}
+
 console.log("Condicional- case ");
 switch (numerico) {
     case 12:
@@ -254,7 +310,7 @@ switch (numerico) {
         break;
 }
 
-var strLetraA = "a";
+let strLetraA = "a";
 switch (strLetraA.toUpperCase()) {
     case "A":
         console.log("Es A");
@@ -264,29 +320,15 @@ switch (strLetraA.toUpperCase()) {
         break;
 }
 
-console.log("Sentencia - while ");
-
-var i = 0;
-while (i < numerico) {
-    console.log(i);
-    i++;
-}
-i = 0;
-do {
-    console.log(i);
-    i++;
-} while (i < numerico);
-
-console.log("Sentencia - for ");
-
+//  For
 for (var i = 0; i < numerico; i++) {
     console.log(i);
 }
 
 console.log("Sentencia - for loop ");
 
-var arreglo = ["uno", "dos", "tres"];
-for (var i in arreglo) {
+let arreglo = ["uno", "dos", "tres"];
+for (let i in arreglo) {
     console.log(arreglo[i]);
 }
 // Foreach recibe como parametro una funcion con 3 parametros, usamos lambda
@@ -299,19 +341,117 @@ arreglo.forEach((value) => {
     console.log(value);
 })
 
+// Exceptions
+// throw expresión;
+
+try {
+    //...
+    throw "error"
+}
+catch (e) {
+    console.log(e);
+} finally {
+    console.log("end")
+}
+
+// Normalmente se usa con el objeto Error
+throw (new Error('The message'));
+
+
+//Definicion de Funciones
+console.log("\n\n\n Funciones");
+
+function sumaMuestra(numero1, numero2) {
+    var resultado = numero1 + numero2;
+    console.log("El resultado es " + resultado);
+};
+
+sumaMuestra(1, 3); // llamada a la funcion
+
+// Una variable puede ser un puntero a funcion
+let sumaMuestra1 = function (numero1, numero2) { // Un puntero a funcion.
+    var resultado = numero1 + numero2;
+    return "El resultado es " + resultado; // En este ejemplo la funcion retorna un valor.
+};
+console.log(sumaMuestra1(1, 3)); // LLamada con punteros.
+
+
+function accesoGlobal() {
+    console.log("Accedemos a la variable global mensaje " + mensaje);
+};
+
+accesoGlobal();
+
+// Funciones anidadas
+function outside(x) {
+    function inside(y) {
+        return x + y;
+    }
+    return inside;
+}
+
+// Closures, es una estrategia por la cual una funcion puede retornar otra funcion u objeto
+// haciendo uso de variables definidas localemente
+let petFunc = function (name) {
+    return function () {
+        return name;
+    }
+};
+let myPet = petFunc("Vivie");
+myPet(); // Imprime "Vivie", pero esta funcion no tiene conocimientos del contexto con el cual fue generada
+
+// Es una estrategia muy util cuando se quieren hacer callbacks con funciones que tienen
+// inicializaciones de ambito local
+
+
+// Arguments es un arreglo que nos permite analizar los argumentos de una funcion
+function myConcat(separator) {
+    if (arguments.length != 1) {
+        throw (new Error("Invalid arguments"))
+    }
+    // ...
+}
+
+// Arugumentos variables
+function multiply(multiplier, ...theArgs) {
+    return theArgs.map(x => multiplier * x);
+}
+
+
+// Funciones anonimas
+
+(function (param) {
+    console.log("Funcion anonima e inmediata");
+})("");
+
+
+// Expresion lambda
+((param) => {
+    console.log("Arrow function anonimo " + param);
+})("el parametro");
+
+let funcionLambda = (param) => {
+    console.log("Arrow function " + param);
+};
+funcionLambda("Hola");
+
+(() => {
+    let texto = "texto 2"
+    console.log(texto + 123)
+})();
+
+// Funciones predefinidas interesantes
+// eval  // eval("2 + 2") ==>  4
+// isFinite
+// isNaN
+// parseInt and parseFloat
+// Number and String
+// encodeURI, decodeURI, encodeURIComponent, decodeURIComponent
+
+
 /**
  * Creacion del primer objeto en linea.
  *
- * Uso de var para crear una instancia de un objeto.
- * las pripiedades de un objeto pueden tener cualquier nombre alfanumerico y varios caracteres especiales como _$@, excepto por las palabras reservadas :
- *
- * " ' abstract arguments boolean break byte case catch char class* const continue debugger default delete do double else enum* eval export*
- *   extends* false final finally float for function goto if implements import* in instanceof int interface let long native new null
- *   package private protected public return short static super* switch synchronized this throw throws transient true try typeof var void volatile
- *   while with yield
- *
- *
- * Javascript no utiliza tipos de datos, por lo que el tipo de datos de una propiedad se infiere de la asignacion de un valor.
  *
  * Los objetos en javascript no son definidos por tipos, por lo tanto puede agregarse y quitarse las propiedades a gusto.
  * Puede definirse por ejemplo un objeto simplemente enunciandolo
@@ -319,7 +459,8 @@ arreglo.forEach((value) => {
  */
 console.log("\n\n Objetos simples y arreglos");
 
-var primerObjeto = {
+// Ase podemos crear un objeto en linea
+let primerObjeto = {
     fechaActual: Date(),
     label: "primerObjeto",
     getFechaActual: function () {
@@ -327,56 +468,27 @@ var primerObjeto = {
     }
 };
 
-function newPrimerObb() {
-    return {
-        fechaActual: Date(),
-        label: "primerObjeto",
-        getFechaActual: function () {
-            return "Este es la fecha actual" + this.fechaActual;
-        }
-    }
+// operaciones con objetos
+
+// in determina si la propiedad se encuentra en un objeto
+
+nombrePropiedadoNumero in nombreObjeto
+
+// instanceof  determina si un objeto es de un tipo especfico
+nombreObjeto instanceof Date
+
+// Tambien podemos usar una funcion constructora
+
+function Auto(marca, modelo, annio) {
+    this.marca = marca;
+    this.modelo = modelo;
+    this.annio = annio;
 }
 
-console.log(primerObjeto.fechaActual);
-console.log(primerObjeto.getFechaActual());
+var miAuto = new Auto("Eagle", "Talon TSi", 1993);
+miAuto.marca = "VW"
+console.log(miAuto.annio)
 
-primerObjeto.label = "ya no es mas el primer objeto";
-console.log(primerObjeto["label"]);
-
-// null y undefined
-primerObjeto.label = 15;
-console.log("Analizando valor numerico : " + primerObjeto.label);
-
-// null y undefined
-primerObjeto.label = undefined;
-console.log("Analizando valor undefined : " + primerObjeto.label);
-
-primerObjeto.label = null;
-console.log("Analizando valor null : " + primerObjeto.label);
-
-// En javascript los objetos no son estrucutras fijas, podemos agregarle propiedades luego de instanciar objetos
-primerObjeto.propiedadAgregada = "Agregada";
-console.log("Podemos agregar propiedades : " + primerObjeto.propiedadAgregada);
-
-// Incluso cambiar el comportamiento del objeto
-primerObjeto.getFechaActual = () => { return "Funcion cambiada." };
-console.log(primerObjeto.getFechaActual());
-
-/*
- * Existe una relacion muy cercana en javascript entre un objeto y un arreglo,
- * ya que los objetos pueden utilizarse como arreglos.
- */
-
-var objetoYArreglos = {
-    arreglo: ["arreglo 1", "arreglo 2", "arreglo 3"],
-    "1": "valor 1",
-    "2": "valor 2"
-}
-
-console.log(objetoYArreglos[0]);
-console.log(objetoYArreglos["2"]);
-console.log(objetoYArreglos["arreglo"][0]);
-console.log(objetoYArreglos.arreglo["1"]);
 
 /**
  * Clases y prototipos
@@ -388,115 +500,43 @@ console.log(objetoYArreglos.arreglo["1"]);
  * la definicion de clases.
  *
  */
-// El patron mas simple para la creacion de objetos es utilizando una funcion de construccion de objeto
-console.log("\n\Factory Pattern");
-var Objeto1 = function (nombre, edad, estado) {
-    var result = {
-        nombre: nombre,
-        edad: edad
-    };
+// Esto solo aplica para ES6, para versiones anteriores es mucho mas complejo
+class ClassWithStaticField {
+    static staticField = 'static field';
+    static staticMethod() { return ' method output'; }
+    static #PRIVATE_STATIC_FIELD;
 
-    result.estado = estado;
+    property1 = 'instance field';
+    instanceMethod() { return 'method output'; }
 
-    result.log = function () {
-        // Notar el uso de this dentro de la funcion, referencia a una instancia de result
-        console.log(JSON.stringify(this));
+    #msg = 'variable privada';  // Las variables privadas comienzan con #
+    get msg() {
+        return this.#msg;
+    }
+    set msg(x) {
+        this.#msg = `hello ${x}`;
     }
 
-    return result;
-}
-
-var objetoFuncion1 = Objeto1("Nestor", 40, true);
-var objetoFuncion2 = Objeto1("Bruno", 5, false);
-objetoFuncion1.log();
-objetoFuncion2.log();
-
-//Construction Pattern
-console.log("\n\nConstruction Pattern");
-var Objeto2 = function (nombre, edad, estado) {
-    this.nombre = nombre;
-    this.edad = edad;
-    this.estado = estado;
-
-    // El problema es que esta definicion de funcion se replica por cada uno
-    // de los objetos que creamos
-    this.log = function () {
-        console.log(JSON.stringify(this));
+    #privateMethod() {
+        return 'hello world';
     }
 }
+console.log(ClassWithStaticField.staticField);
+console.log(ClassWithStaticField.staticMethod());
 
-var constructorPersona1 = new Objeto2("Nestor", 40, true);
-var constructorPersona2 = new Objeto2("Bruno", 5, false);
-constructorPersona1.log();
-constructorPersona2.log();
-
-//Prototype Construction Function
-console.log("\n\nPrototype Construction Function");
-var Objeto3 = function (nombre, edad, estado) {
-    this._nombre = nombre;
-    this._edad = edad;
-    this._estado = estado;
-    this._apellido = null;
-}
-Objeto3.prototype.log = function () {
-    console.log(JSON.stringify(this));
-}
-Objeto3.prototype.actualizarEdad = function (nuevaEdad) {
-    if (nuevaEdad < 0) {
-        nuevaEdad = 0
-    }
-    this.edad = nuevaEdad
-}
-Objeto3.prototype.cumple = function () {
-    this.edad++
-}
-
-var prototypePersona1 = new Objeto3("Nestor", 40, true);
-var prototypePersona2 = new Objeto3("Bruno", 5, false);
-prototypePersona1.log();
-prototypePersona2.log();
+const instance = new ClassWithInstanceField();
+console.log(instance.property1)
+console.log(instance.instanceMethod())
 
 
-console.log("\n\n Callback Pattern");
-// Callback Functions - High order functions
-// En javascript las funciones son first class objects, se pueden pasar como argumentos.
-var funcionPrincipal = function (callback) {
-    console.log("Ejecutando el proceso principal");
-    callback();
-}
-
-funcionPrincipal(() => {
-    console.log("Callback");
-});
-
-console.log("\n\n Strategy Pattern");
-//En javascript las funciones son first class objects, se pueden pasar como argumentos.
-function sum(a, b) {
-    return a + b;
-};
-
-function multiply(a, b) {
-    return a * b;
-};
-
-function calc(a, b, func) {
-    if (typeof func === "function")
-        return func(a, b);
-}
-
-console.log(calc(2, 3, sum));
-console.log(calc(2, 3, multiply));
-console.log(calc(2, 3, (a, b) => {
-    return a + " y " + b;
-}));
 
 //En javascript las promesas son similares se compromete a hacer una tarea y resulta ok o falla
 // http://javascriptplayground.com/blog/2015/02/promises/
 console.log("\n\n Promises");
-var promesaCasamiento = new Promise((resolve, reject) => {
+let promesaCasamiento = new Promise((resolve, reject) => {
     console.log("Intentando casarse... esto va a llevar mucho tiempo...");
 
-    var seCaso = Math.random() >= 0.5;
+    let seCaso = Math.random() >= 0.5;
 
     if (seCaso) {
         resolve("Todo bien");

@@ -2,9 +2,9 @@
  * Declaraciones de clases e interfaces
  */
 
-// Las interfaces actuan como una estructura a respetar, las clases en typescript no 
+// Las interfaces actuan como una estructura a respetar, las clases en typescript no
 // necesariamente implementan interfaces, pero typescript determina en base al contexto si el objeto
-// es posible ser utilizado con esa declaracion de interfaz 
+// es posible ser utilizado con esa declaracion de interfaz
 {
     interface LabelledValue {
         label: string;
@@ -37,7 +37,7 @@
     }
 
     let mySquare = createSquare( { color: "black", width:1 });
-    
+
 }
 
 // Readonly es similar a const, pero se usa para interfaces
@@ -60,7 +60,7 @@
     }
 }
 
-// Forzar a implementar interfaces 
+// Forzar a implementar interfaces
 {
     interface ClockInterface {
         currentTime: Date;
@@ -80,6 +80,7 @@
 
     interface Square extends Shape {
         sideLength: number;
+        name(params:number): void;
     }
 }
 
@@ -162,7 +163,7 @@
             console.log( `${this.name} moved ${distanceInMeters}m.` );
         }
     }
-    
+
     let an = new Animal("Chuwaca");
     console.log(an.name);
     an.name = "";
