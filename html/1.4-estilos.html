@@ -7,7 +7,10 @@
 
 	<!-- style es el elemento que nos permite definir estilos -->	
 	<style type="text/css">
-		p { color: blue; font-family: Verdana; }
+		p { 
+			color: blue; 
+			font-family: Verdana; 
+		}
 		
 		a:link    {color:green; background-color:transparent; text-decoration:none}
 		a:visited {color:pink; background-color:transparent; text-decoration:none}
@@ -21,7 +24,23 @@
 </head>
 
 <body>
+	<p>Parrafo predeterminado.</p>
 
+		<!-- 
+		_blank	Opens the linked document in a new window or tab
+		_self	Opens the linked document in the same frame as it was clicked (this is default)
+		_parent	Opens the linked document in the parent frame
+		_top	Opens the linked document in the full body of the window
+		framename	Opens the linked document in a named frame
+	 -->
+	 <a href="index.html" target="_blank">Home</a> <br />
+	
+	 El contenido del enlace puede ser una imagen, y los enlaces pueden usarse para mandar mails : 
+	 <a href="/mailto:nmarsollier@gmail.com">
+		 <img src="assets/img/sobre.jpg"  alt="Mail"/>
+	 </a> 
+	
+	 
 	<!--  Podemos definir estilos para un elemento en particular usando el atribute style -->
 	<h1 style="color:blue;">This is a heading</h1>
 	<p style="color:red;">This is a paragraph.</p>
@@ -90,21 +109,6 @@
 	  <li>Leche</li>
 	</ul>
 
-
-	<!-- 
-		_blank	Opens the linked document in a new window or tab
-		_self	Opens the linked document in the same frame as it was clicked (this is default)
-		_parent	Opens the linked document in the parent frame
-		_top	Opens the linked document in the full body of the window
-		framename	Opens the linked document in a named frame
-	 -->
-	<a href="index.html" target="_blank">Home</a> <br />
-	
-	El contenido del enlace puede ser una imagen, y los enlaces pueden usarse para mandar mails : 
-	<a href="/mailto:nmarsollier@gmail.com">
-		<img src="assets/img/sobre.jpg"  alt="Mail"/>
-	</a> 
-	
 
 </body>
 </html>

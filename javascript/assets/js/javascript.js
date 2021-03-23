@@ -1,31 +1,30 @@
 // console.log es una forma de imprimir en la consola
 console.log("Variables");
 
-// Alfanumericos
+// Alfanuméricos
 // const define una constante, no se puede modificar el valor al que apunta
 // No significa que el objeto al que apunte sea inmutable, pero no podemos cambiar la referencia
 // para que apunte a otro obj
 const constante = "esta es una constante";
 
 // let define variables
-let variableLet = "esta es una varible con let";
-
+let variableLet = "esta es una variable con let";
 
 // En un contexto delimitado, por ejemplo un bloque de estructura
 function letTest() {
     let x = 31;
     if (true) {
-        let x = 71;  // Define una variable nueva dentro del bloque if
-        console.log(x);  // 71
+        let x = 71; // Define una variable nueva dentro del bloque if
+        console.log(x); // 71
     }
-    console.log(x);  // 31
+    console.log(x); // 31
 }
 
 // Por otro lado no se puede redefinir la misma variable con let
 if (x) {
     let foo;
     let foo; // Terminamos con un SyntaxError.
-    var foo; // Igual tendriamos SyntaxError
+    var foo; // Igual tendríamos SyntaxError
 }
 
 //  no podemos usarlas antes de que sean definidos
@@ -41,18 +40,18 @@ function let_something() {
 }
 
 
-// Var define variables, similar a let pero es scope es a funcion, por lo tanto
+// Var define variables, similar a let pero es scope es a función, por lo tanto
 // puede darnos resultados inesperados.
 function varTest() {
     var x = 31;
     if (true) {
-        var x = 71;  // Misma variable, no se define una nueva
-        console.log(x);  // 71
+        var x = 71; // Misma variable, no se define una nueva
+        console.log(x); // 71
     }
-    console.log(x);  // 71
+    console.log(x); // 71
 }
 
-// Por otro lado no se puede redefinir la misma variable con let
+// Por otro lado se puede redefinir la misma variable con var
 if (x) {
     var foo;
     var foo; // Todo bien, es la misma variable
@@ -89,7 +88,8 @@ let $_a__$4;
 
 // Tipos de datos :
 // 1- Boolean. true y false.
-// 2- null. Una palabra clave especial que denota un valor nulo. Como JavaScript es case-sensitive, null no es lo mismo que Null, NULL, o cualquier otra variante.
+// 2- null. Una palabra clave especial que denota un valor nulo. Como JavaScript es case-sensitive, 
+//    null no es lo mismo que Null, NULL, o cualquier otra variante.
 // 3- undefined. Una propiedad de alto nivel cuyo valor no es definido.
 // 4- Number. Un número entero o un número con coma flotante. Por ejemplo: 42 o 3.14159.
 // 5- BigInt. Un número entero con precisión arbitraria. Por ejemplo: 9007199254740992n
@@ -138,7 +138,7 @@ console.log(numero1.toFixed(6)); // 4564.845670
 console.log(numero1.toFixed()); // 4565
 
 //Undefined y null
-let objetoUndefined; // = undefined  es una variable declarada, pero nunca inicializada
+let objetoUndefined; // = undefined  es una variable declarada, pero nunca inicializado
 let objetoNull = null; // = valor especial null
 
 // Objetos literales
@@ -157,12 +157,12 @@ var re = /ab+c/;
 //Arrays
 console.log("\n\n\nArrays");
 
-// La siguiente es una definicion literal de arrays:
+// La siguiente es una definición literal de arrays:
 let dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; // Arreglo de caracteres.
 
 // Los arrays son objetos, y pueden iniciarse de la forma
 let data1 = new Array("Hola", miVariable, 3.14159);
-let data2 = new Array(20);  // 20 es el tamaño que queremos inicial del array
+let data2 = new Array(20); // 20 es el tamaño que queremos inicial del array
 
 let primerElemento = dias[0]; // = "Lunes"
 
@@ -179,7 +179,9 @@ array.push("mundo"); // array = ["hola", "mundo"]
 array = [1, 2, 3]; // Una reasignacion puede cambiar el tipo de datos del array
 let primero = array.shift(); // ahora array = [2, 3], primero = 1
 
-array = [1, "hola", { text: "mundo" }]; // Podemos incluir cualquier elemento en el array
+array = [1, "hola", {
+    text: "mundo"
+}]; // Podemos incluir cualquier elemento en el array
 
 
 
@@ -197,14 +199,14 @@ let visible = true;
 let varBooleana = !visible;
 
 let cantidad = 0;
-varBooleana = !cantidad; // Expresar un numero como booleano.  0 evalua false, al negarlo queda = true
+varBooleana = !cantidad; // Expresar un numero como booleano.  0 evalúa false, al negarlo queda = true
 
 let mensaje = "";
 varBooleana = !mensaje; // varBooleana = true
 
-varBooleana = !cantidad && !mensaje; // Expresion logica And. resultado  = true
+varBooleana = !cantidad && !mensaje; // Expresión lógica And. resultado  = true
 
-// Delete limina una variable definida con var, la deja undefined
+// Delete elimina una variable definida con var, la deja undefined
 delete varBooleana;
 
 //Funciones STRING
@@ -288,16 +290,15 @@ do {
 
 // Switch
 switch (expresión) {
+    case etiqueta_0:
     case etiqueta_1:
         sentencias_1
-        [break;]
+        break;
     case etiqueta_2:
         sentencias_2
-        [break;]
-      ...
+        break;
     default:
         sentencias_por_defecto
-        [break;]
 }
 
 console.log("Condicional- case ");
@@ -331,12 +332,12 @@ let arreglo = ["uno", "dos", "tres"];
 for (let i in arreglo) {
     console.log(arreglo[i]);
 }
-// Foreach recibe como parametro una funcion con 3 parametros, usamos lambda
+// Foreach recibe como parámetro una función con 3 parámetros, usamos lambda
 arreglo.forEach((value, index, array) => {
     console.log(value);
 })
 
-// poodemos prescindir de lo que no necesitamos
+// podemos prescindir de lo que no necesitamos
 arreglo.forEach((value) => {
     console.log(value);
 })
@@ -347,8 +348,7 @@ arreglo.forEach((value) => {
 try {
     //...
     throw "error"
-}
-catch (e) {
+} catch (e) {
     console.log(e);
 } finally {
     console.log("end")
@@ -366,12 +366,12 @@ function sumaMuestra(numero1, numero2) {
     console.log("El resultado es " + resultado);
 };
 
-sumaMuestra(1, 3); // llamada a la funcion
+sumaMuestra(1, 3); // llamada a la función
 
-// Una variable puede ser un puntero a funcion
-let sumaMuestra1 = function (numero1, numero2) { // Un puntero a funcion.
+// Una variable puede ser un puntero a función
+let sumaMuestra1 = function (numero1, numero2) { // Un puntero a función.
     var resultado = numero1 + numero2;
-    return "El resultado es " + resultado; // En este ejemplo la funcion retorna un valor.
+    return "El resultado es " + resultado; // En este ejemplo la función retorna un valor.
 };
 console.log(sumaMuestra1(1, 3)); // LLamada con punteros.
 
@@ -390,21 +390,21 @@ function outside(x) {
     return inside;
 }
 
-// Closures, es una estrategia por la cual una funcion puede retornar otra funcion u objeto
-// haciendo uso de variables definidas localemente
+// Closures, es una estrategia por la cual una función puede retornar otra función u objeto
+// haciendo uso de variables definidas localmente
 let petFunc = function (name) {
     return function () {
         return name;
     }
 };
 let myPet = petFunc("Vivie");
-myPet(); // Imprime "Vivie", pero esta funcion no tiene conocimientos del contexto con el cual fue generada
+myPet(); // Imprime "Vivie", pero esta función no tiene conocimientos del contexto con el cual fue generada
 
 // Es una estrategia muy util cuando se quieren hacer callbacks con funciones que tienen
-// inicializaciones de ambito local
+// inicializacion de ámbito local
 
 
-// Arguments es un arreglo que nos permite analizar los argumentos de una funcion
+// Arguments es un arreglo que nos permite analizar los argumentos de una función
 function myConcat(separator) {
     if (arguments.length != 1) {
         throw (new Error("Invalid arguments"))
@@ -412,20 +412,20 @@ function myConcat(separator) {
     // ...
 }
 
-// Arugumentos variables
+// Argumentos variables
 function multiply(multiplier, ...theArgs) {
     return theArgs.map(x => multiplier * x);
 }
 
 
-// Funciones anonimas
+// Funciones anónimas
 
 (function (param) {
     console.log("Funcion anonima e inmediata");
 })("");
 
 
-// Expresion lambda
+// Expresión lambda o arrow
 ((param) => {
     console.log("Arrow function anonimo " + param);
 })("el parametro");
@@ -450,11 +450,11 @@ funcionLambda("Hola");
 
 
 /**
- * Creacion del primer objeto en linea.
+ * Creación del primer objeto en linea.
  *
  *
  * Los objetos en javascript no son definidos por tipos, por lo tanto puede agregarse y quitarse las propiedades a gusto.
- * Puede definirse por ejemplo un objeto simplemente enunciandolo
+ * Puede definirse por ejemplo un objeto simplemente enunciándolo
  *
  */
 console.log("\n\n Objetos simples y arreglos");
@@ -474,10 +474,10 @@ let primerObjeto = {
 
 nombrePropiedadoNumero in nombreObjeto
 
-// instanceof  determina si un objeto es de un tipo especfico
+// instanceof  determina si un objeto es de un tipo especifico
 nombreObjeto instanceof Date
 
-// Tambien podemos usar una funcion constructora
+// También podemos usar una función constructora
 
 function Auto(marca, modelo, annio) {
     this.marca = marca;
@@ -497,27 +497,31 @@ console.log(miAuto.annio)
  * pero todo en javascript es una estructura de datos, y a su vez
  * las estructuras de datos pueden tener punteros a funciones, por lo tanto
  * se pueden simular objetos, el problema es que no tenemos soporte para
- * la definicion de clases.
+ * la definición de clases.
  *
  */
 // Esto solo aplica para ES6, para versiones anteriores es mucho mas complejo
 class ClassWithStaticField {
     static staticField = 'static field';
-    static staticMethod() { return ' method output'; }
-    static #PRIVATE_STATIC_FIELD;
+    static staticMethod() {
+        return ' method output';
+    }
+    static __PRIVATE_STATIC_FIELD;
 
     property1 = 'instance field';
-    instanceMethod() { return 'method output'; }
+    instanceMethod() {
+        return 'method output';
+    }
 
-    #msg = 'variable privada';  // Las variables privadas comienzan con #
+    __msg = 'variable privada'; // Las variables privadas comienzan con __
     get msg() {
-        return this.#msg;
+        return this.__msg;
     }
     set msg(x) {
-        this.#msg = `hello ${x}`;
+        this.__msg = `hello ${x}`;
     }
 
-    #privateMethod() {
+    __privateMethod() {
         return 'hello world';
     }
 }
@@ -546,10 +550,10 @@ let promesaCasamiento = new Promise((resolve, reject) => {
 });
 
 promesaCasamiento.then(
-    (result) => {
-        console.log("Se caso " + result);
-    }
-)
+        (result) => {
+            console.log("Se caso " + result);
+        }
+    )
     .catch(
         (reason) => {
             console.log(" No se caso " + reason);
@@ -587,4 +591,3 @@ testAsyncAwait();
         console.log("Integrando Falla " + reason);
     }
 })()
-
