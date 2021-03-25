@@ -1,7 +1,6 @@
 // console.log es una forma de imprimir en la consola
 console.log("Variables");
 
-// Alfanuméricos
 // const define una constante, no se puede modificar el valor al que apunta
 // No significa que el objeto al que apunte sea inmutable, pero no podemos cambiar la referencia
 // para que apunte a otro obj
@@ -14,6 +13,7 @@ let variableLet = "esta es una variable con let";
 function letTest() {
     let x = 31;
     if (true) {
+        console.log(x); // 31
         let x = 71; // Define una variable nueva dentro del bloque if
         console.log(x); // 71
     }
@@ -72,6 +72,7 @@ function var_something() {
 
 // Ejemplos
 let cadena2 = "Cadena compuesta con 'comillas simples'";
+let cadena4 = "Cadena compuesta con \"comillas simples\"";
 let cadena3 = 'Cadena con "comillas dobles" y caracteres unicode \u0041';
 let cadenaConcatenada = 'Cadena ' + "concatenada";
 let template = `Templates a partir de ES5 ${cadena2}`
@@ -107,9 +108,9 @@ let cadenaConComillas = "Esta es una cadena con \"comillas \""; // Incluir comil
 
 let cadenaCombinandoComillas = 'Esta es una cadena con "comillas" tambien. '; // Se pueden utilizar comillas simples y dobles.
 
-let cadenaUnicod = "Cadena con caracteres unicode \u0041 "; // Caracteres unicode comienzan con \u
+let cadenaUnicode = "Cadena con caracteres unicode \u0041 "; // Caracteres unicode comienzan con \u
 
-//Asigancion y Expresiones
+//Asignación y Expresiones
 
 let asignacionNumerica = variableNumerica; // Podemos asingar un valor de una variable a otra.
 
@@ -132,7 +133,7 @@ let numero1 = 4564.84567;
 // Para evitar confusiones es bueno utilizar funciones de conversion como
 // parseInt(), parseFloat()
 
-// toFixed redondea los numeros
+// toFixed redondea los números
 console.log(numero1.toFixed(2)); // 4564.85
 console.log(numero1.toFixed(6)); // 4564.845670
 console.log(numero1.toFixed()); // 4565
@@ -150,9 +151,8 @@ let estructuraDatos1 = {
     }
 }
 
-// Expresiones regulares en forma literal, se definen con / y son del tipo  RegExp
+// Expresiones regulares en forma literal, se definen con / y son del tipo RegExp
 var re = /ab+c/;
-
 
 //Arrays
 console.log("\n\n\nArrays");
@@ -273,7 +273,7 @@ if (!null) {
 if (numerico > 3) {
     console.log("ok"); // Numerico tiene valor > 3
 }
-console.log(12 + 2 == 14 ? "ok 12 + 2 == 14 " : "no"); // La operacion matematica da 14
+console.log((12 + 2 == 14) ? "ok 12 + 2 == 14 " : "no"); // La operacion matematica da 14
 
 
 // If inmediato
@@ -289,12 +289,14 @@ do {
 } while (x < 10);
 
 // Switch
-switch (expresión) {
-    case etiqueta_0:
-    case etiqueta_1:
+let expresion = 12
+switch (expresion) {
+    case "12":
+        sentencias_previas
+    case "hola":
         sentencias_1
         break;
-    case etiqueta_2:
+    case "mundo":
         sentencias_2
         break;
     default:
@@ -322,7 +324,7 @@ switch (strLetraA.toUpperCase()) {
 }
 
 //  For
-for (var i = 0; i < numerico; i++) {
+for (let i = 0; i < numerico; i++) {
     console.log(i);
 }
 
@@ -332,6 +334,7 @@ let arreglo = ["uno", "dos", "tres"];
 for (let i in arreglo) {
     console.log(arreglo[i]);
 }
+
 // Foreach recibe como parámetro una función con 3 parámetros, usamos lambda
 arreglo.forEach((value, index, array) => {
     console.log(value);
@@ -358,12 +361,13 @@ try {
 throw (new Error('The message'));
 
 
-//Definicion de Funciones
+//Definición de Funciones
 console.log("\n\n\n Funciones");
 
 function sumaMuestra(numero1, numero2) {
     var resultado = numero1 + numero2;
     console.log("El resultado es " + resultado);
+    return resultado;
 };
 
 sumaMuestra(1, 3); // llamada a la función
@@ -375,6 +379,10 @@ let sumaMuestra1 = function (numero1, numero2) { // Un puntero a función.
 };
 console.log(sumaMuestra1(1, 3)); // LLamada con punteros.
 
+sumaMuestra1 = function (numero1, numero2) { // Un puntero a función.
+    var resultado = numero1 - numero2;
+    return "El resultado es " + resultado; // En este ejemplo la función retorna un valor.
+};
 
 function accesoGlobal() {
     console.log("Accedemos a la variable global mensaje " + mensaje);
@@ -393,12 +401,16 @@ function outside(x) {
 // Closures, es una estrategia por la cual una función puede retornar otra función u objeto
 // haciendo uso de variables definidas localmente
 let petFunc = function (name) {
+    let rnd = Math.random();
     return function () {
-        return name;
+        return name + rnd;
     }
 };
 let myPet = petFunc("Vivie");
+let myPet2 = petFunc("Boby");
+
 myPet(); // Imprime "Vivie", pero esta función no tiene conocimientos del contexto con el cual fue generada
+myPet2();
 
 // Es una estrategia muy util cuando se quieren hacer callbacks con funciones que tienen
 // inicializacion de ámbito local
@@ -417,13 +429,14 @@ function multiply(multiplier, ...theArgs) {
     return theArgs.map(x => multiplier * x);
 }
 
-
 // Funciones anónimas
-
 (function (param) {
-    console.log("Funcion anonima e inmediata");
-})("");
+    let time = new Date()
+    //ocupa tiempo
+    console.log(time)
 
+    console.log("Función anónima e inmediata");
+})("");
 
 // Expresión lambda o arrow
 ((param) => {
@@ -463,7 +476,7 @@ console.log("\n\n Objetos simples y arreglos");
 let primerObjeto = {
     fechaActual: Date(),
     label: "primerObjeto",
-    getFechaActual: function () {
+    getFechaActual: () => {
         return "Este es la fecha actual" + this.fechaActual;
     }
 };
@@ -476,19 +489,6 @@ nombrePropiedadoNumero in nombreObjeto
 
 // instanceof  determina si un objeto es de un tipo especifico
 nombreObjeto instanceof Date
-
-// También podemos usar una función constructora
-
-function Auto(marca, modelo, annio) {
-    this.marca = marca;
-    this.modelo = modelo;
-    this.annio = annio;
-}
-
-var miAuto = new Auto("Eagle", "Talon TSi", 1993);
-miAuto.marca = "VW"
-console.log(miAuto.annio)
-
 
 /**
  * Clases y prototipos
@@ -510,7 +510,7 @@ class ClassWithStaticField {
 
     property1 = 'instance field';
     instanceMethod() {
-        return 'method output';
+        return 'method output' + this.property1;
     }
 
     __msg = 'variable privada'; // Las variables privadas comienzan con __
@@ -525,11 +525,12 @@ class ClassWithStaticField {
         return 'hello world';
     }
 }
+
 console.log(ClassWithStaticField.staticField);
 console.log(ClassWithStaticField.staticMethod());
 
 const instance = new ClassWithInstanceField();
-console.log(instance.property1)
+console.log(instance.msg)
 console.log(instance.instanceMethod())
 
 
@@ -549,16 +550,16 @@ let promesaCasamiento = new Promise((resolve, reject) => {
     }
 });
 
-promesaCasamiento.then(
-        (result) => {
-            console.log("Se caso " + result);
-        }
-    )
-    .catch(
-        (reason) => {
-            console.log(" No se caso " + reason);
-        }
-    );
+console.log("Paso 1")
+promesaCasamiento
+    .then((result) => {
+        console.log("Se caso " + result);
+    })
+    .catch((reason) => {
+        console.log("No se caso " + reason);
+    });
+
+console.log("Paso 2")
 
 // Promesas con async await
 console.log("\n\n Async / Await");
